@@ -19,10 +19,12 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     view.cpp \
     square.cpp \
-    model.cpp
+    model.cpp \
+    shape.cpp
 
 HEADERS  += mainwindow.h \
     view.h \
     square.h \
-    model.h
+    model.h \
+    shape.h
 
