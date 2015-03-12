@@ -25,4 +25,4 @@ private:
     QVector<QPointF> stuff;
 };
 
-#endif // SQUARE_H
+#endif // PARALELLOGRAM_H
