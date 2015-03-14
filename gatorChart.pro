@@ -20,11 +20,13 @@ SOURCES += main.cpp\
     view.cpp \
     square.cpp \
     model.cpp \
-    shape.cpp
+    shape.cpp \
+    dimond.cpp
 
 HEADERS  += mainwindow.h \
     view.h \
     square.h \
     model.h \
-    shape.h
+    shape.h \
+    dimond.h
 
