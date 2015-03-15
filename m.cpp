@@ -1,8 +1,8 @@
-#include "square.h"
+#include "m.h"
 
 #include <QtWidgets>
 
-Square::Square(const QColor &color, int x, int y)
+m::m(const QColor &color, int x, int y)
 {
     this->x = x;
     this->y = y;
@@ -13,19 +13,20 @@ Square::Square(const QColor &color, int x, int y)
     setAcceptHoverEvents(true);
 }
 
-QRectF Square::boundingRect() const
+QRectF m::boundingRect() const
 {
-    return QRectF(0, 0, 110, 70);
+    //QRectF represents a rectangle
+    return QRectF(0, 0, 110, 70); //x,y,width,height
 }
 
-QPainterPath Square::shape() const
+QPainterPath m::shape() const
 {
     QPainterPath path;
     path.addRect(14, 14, 82, 42);
     return path;
 }
 
-void Square::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+void m::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     Q_UNUSED(widget);
 
@@ -43,23 +44,24 @@ void Square::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
     QBrush b = painter->brush();
     painter->setBrush(QBrush(fillColor.dark(option->state & QStyle::State_Sunken ? 120 : 100)));
 
-    painter->drawRect(QRect(14, 14, 79, 39));
+    //painter->drawRect(QRect(14, 14, 79, 39));
     painter->setBrush(b);
 
-    painter->setPen(QPen(Qt::gray, 1));
-    painter->drawLine(15, 54, 94, 54);
-    painter->drawLine(94, 53, 94, 15);
+    painter->setPen(QPen(Qt::black, 3));
+    painter->drawLine(0, 0, 0, 50);
+    painter->drawLine(0, 50, 50, 0);
+    painter->drawLine(50, 50, 50, 0);
     painter->setPen(QPen(Qt::black, 0));
 
 }
 
-void Square::mousePressEvent(QGraphicsSceneMouseEvent *event)
+void m::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     QGraphicsItem::mousePressEvent(event);
     update();
 }
 
-void Square::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+void m::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
     if (event->modifiers() & Qt::ShiftModifier) {
         stuff << event->pos();
@@ -69,7 +71,7 @@ void Square::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
     QGraphicsItem::mouseMoveEvent(event);
 }
 
-void Square::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+void m::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
     QGraphicsItem::mouseReleaseEvent(event);
     update();

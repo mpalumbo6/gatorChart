@@ -11,6 +11,12 @@
 #endif
 #include <qmath.h>
 
+
+/*
+ * This file represents what you see in the application
+*/
+
+//handles scrolling
 #ifndef QT_NO_WHEELEVENT
 void GraphicsView::wheelEvent(QWheelEvent *e)
 {
@@ -26,9 +32,11 @@ void GraphicsView::wheelEvent(QWheelEvent *e)
 }
 #endif
 
-View::View(const QString &name, QWidget *parent)
+//constructor, sets up the screen
+View::View(const QString &name, model *Mod, QWidget *parent)
     : QFrame(parent)
 {
+    Model = Mod;
     setFrameStyle(Sunken | StyledPanel);
     graphicsView = new GraphicsView(this);
     graphicsView->setRenderHint(QPainter::Antialiasing, true);
@@ -41,20 +49,22 @@ View::View(const QString &name, QWidget *parent)
     QSize iconSize(size, size);
 
 
+    //manipulation buttons
     QToolButton *addSquareButton = new QToolButton;
     addSquareButton->setText(tr("Square"));
 
+    //utility buttons
     QToolButton *zoomInIcon = new QToolButton;
     zoomInIcon->setAutoRepeat(true);
     zoomInIcon->setAutoRepeatInterval(33);
     zoomInIcon->setAutoRepeatDelay(0);
-    zoomInIcon->setIcon(QPixmap(":/zoomin.png"));
+    zoomInIcon->setText(tr("+"));
     zoomInIcon->setIconSize(iconSize);
     QToolButton *zoomOutIcon = new QToolButton;
     zoomOutIcon->setAutoRepeat(true);
     zoomOutIcon->setAutoRepeatInterval(33);
     zoomOutIcon->setAutoRepeatDelay(0);
-    zoomOutIcon->setIcon(QPixmap(":/zoomout.png"));
+    zoomOutIcon->setText(tr("-"));
     zoomOutIcon->setIconSize(iconSize);
     zoomSlider = new QSlider;
     zoomSlider->setMinimum(0);
@@ -157,6 +167,7 @@ View::View(const QString &name, QWidget *parent)
 
 void View::addSquare()
 {
+    Model->create();
     //do nothing for now
 }
 
