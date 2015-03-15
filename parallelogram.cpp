@@ -12,10 +12,10 @@ Parallo::Parallo(const QColor &color, int x, int y)
     setAcceptHoverEvents(true);
 }
 
-QParalloF Parallo::boundingParallo() const
+QPolygonF Parallo::boundingParallo() const
 {
 //0,0,110,70 ???
-    return QParalloF(0, 0, 110, 70);
+    return QPolygonF(0, 0, 110, 70);
 }
 
 QPainterPath Parallo::shape() const
