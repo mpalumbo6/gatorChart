@@ -22,7 +22,11 @@ QPainterPath Parallo::shape() const
 {
     QPainterPath path;
     //14,14,82,742 ???
-    path.addParallo(14, 14, 82, 42);
+    //path.addParallo(14, 14, 82, 42);
+    painter->drawLine(0, 0, 0, 50);
+    painter->drawLine(0, 50, 50, 20);
+    painter->drawLine(50, 20, 50, 0);
+    painter->drawLine(50, 0, 0, 0);
     return path;
 }
 
