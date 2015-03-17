@@ -21,12 +21,14 @@ SOURCES += main.cpp\
     square.cpp \
     model.cpp \
     shape.cpp \
-    m.cpp
+    m.cpp \
+    trap.cpp
 
 HEADERS  += mainwindow.h \
     view.h \
     square.h \
     model.h \
     shape.h \
-    m.h
+    m.h \
+    trap.h
 
