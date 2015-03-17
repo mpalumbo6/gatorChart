@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QWidget>
+#include "model.h"
 
 QT_BEGIN_NAMESPACE
 class QGraphicsScene;
@@ -13,12 +14,13 @@ class MainWindow : public QWidget
 
 public:
     explicit MainWindow(QWidget *parent = 0);
+    QGraphicsScene *scene;
 
 private:
+    model *Model;
     void setupMatrix();
     void populateScene();
 
-    QGraphicsScene *scene;
 };
 
 #endif // MAINWINDOW_H

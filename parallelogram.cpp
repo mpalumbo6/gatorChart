@@ -1,8 +1,7 @@
-#include "square.h"
-
+#include "paralellogram.h"
 #include <QtWidgets>
 
-Square::Square(const QColor &color, int x, int y)
+Parallo::Parallo(const QColor &color, int x, int y)
 {
     this->x = x;
     this->y = y;
@@ -13,19 +12,25 @@ Square::Square(const QColor &color, int x, int y)
     setAcceptHoverEvents(true);
 }
 
-QRectF Square::boundingRect() const
+QPolygonF Parallo::boundingParallo() const
 {
-    return QRectF(0, 0, 110, 70);
+//0,0,110,70 ???
+    return QPolygonF(0, 0, 110, 70);
 }
 
-QPainterPath Square::shape() const
+QPainterPath Parallo::shape() const
 {
     QPainterPath path;
-    path.addRect(14, 14, 82, 42);
+    //14,14,82,742 ???
+    //path.addParallo(14, 14, 82, 42);
+    painter->drawLine(0, 0, 0, 50);
+    painter->drawLine(0, 50, 50, 20);
+    painter->drawLine(50, 20, 50, 0);
+    painter->drawLine(50, 0, 0, 0);
     return path;
 }
 
-void Square::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+void Parallo::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     Q_UNUSED(widget);
 
@@ -43,7 +48,7 @@ void Square::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
     QBrush b = painter->brush();
     painter->setBrush(QBrush(fillColor.dark(option->state & QStyle::State_Sunken ? 120 : 100)));
 
-    painter->drawRect(QRect(14, 14, 79, 39));
+    painter->drawParallo(QParallo(14, 14, 79, 39));
     painter->setBrush(b);
 
     painter->setPen(QPen(Qt::gray, 1));
@@ -51,15 +56,24 @@ void Square::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
     painter->drawLine(94, 53, 94, 15);
     painter->setPen(QPen(Qt::black, 0));
 
+    /*
+    QFont font("Times", 10);
+    font.setStyleStrategy(QFont::ForceOutline);
+    painter->setFont(font);
+    painter->save();
+    painter->scale(1, 1);
+    painter->drawText(0, 0, QString("Start"));
+    painter->restore();
+    */
 }
 
-void Square::mousePressEvent(QGraphicsSceneMouseEvent *event)
+void Parallo::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     QGraphicsItem::mousePressEvent(event);
     update();
 }
 
-void Square::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+void Parallo::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
     if (event->modifiers() & Qt::ShiftModifier) {
         stuff << event->pos();
@@ -69,7 +83,7 @@ void Square::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
     QGraphicsItem::mouseMoveEvent(event);
 }
 
-void Square::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+void Parallo::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
     QGraphicsItem::mouseReleaseEvent(event);
     update();

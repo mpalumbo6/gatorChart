@@ -4,6 +4,7 @@
 
 #include <QFrame>
 #include <QGraphicsView>
+#include "model.h"
 
 QT_BEGIN_NAMESPACE
 class QLabel;
@@ -32,9 +33,10 @@ class View : public QFrame
 {
     Q_OBJECT
 public:
-    explicit View(const QString &name, QWidget *parent = 0);
+    explicit View(const QString &name, model *Mod, QWidget *parent = 0);
 
     QGraphicsView *view() const;
+    model *Model;
 
 public slots:
     void zoomIn(int level = 1);
